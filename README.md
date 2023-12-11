@@ -1,0 +1,1 @@
+This is a collection of functions that implement the method Three-Step Latent Vector Autoregression (Rein, Vermunt, De Roover, Vogelsmeier, 2023) in R. See the file "Instructions.docx" for more information on how to load and use the functions. The related publication also provides an application example of the method using these scripts.
