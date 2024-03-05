@@ -1,6 +1,6 @@
 # only for testing!
-# load("outputstep2.RData")
-# step2output <- output_step2
+# load("examples/outputstep2.RData")
+# step2output <- output
 # structuralmodel = NULL
 
 step3 <- function(step2output, structuralmodel = NULL){

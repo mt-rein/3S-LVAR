@@ -1,6 +1,6 @@
 # only for testing!
-# load("outputstep1.RData")
-# step1output <- output_step1
+# load("examples/outputstep1.RData")
+# step1output <- output
 
 step2 <- function(step1output){
   # step1output:
