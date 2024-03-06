@@ -4,7 +4,7 @@ library(tidyverse)
 source("Simulation/sim_VAR.R")
 
 phi_size <-  "large"
-n <- 80
+n <- 200
 obs <- 50
 rho_gen <- "medium"
 set.seed(123)
