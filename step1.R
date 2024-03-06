@@ -1,19 +1,8 @@
 # only for testing!
-# data <- read.csv("exampledata.csv")
+# data <- read.csv("examples/exampledata.csv")
 # measurementmodel <- "
-#   f1 =~ V1 + V2 + V3 + V4 + V5
-#   f2 =~ V6 + V7 + V8 + V9 + V10
-# 
-#   V1 ~ 0*1
-#   V2 ~ 0*1
-#   V3 ~ 0*1
-#   V4 ~ 0*1
-#   V5 ~ 0*1
-#   V6 ~ 0*1
-#   V7 ~ 0*1
-#   V8 ~ 0*1
-#   V9 ~ 0*1
-#   V10 ~ 0*1
+#   f1 =~ v1 + v2 + v3 + v4
+#   f2 =~ v5 + v6 + v7 + v8
 #   "
 # id = "id"
 
