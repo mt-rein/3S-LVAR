@@ -75,7 +75,7 @@ step3 <- function(step2output, structuralmodel = NULL){
     }
     
     # add population mean (fixed across time):
-    measurementmodel <- paste0(measurementmodel, paste0(indicators, collapse = " + "), " ~ 1", "\n")
+    measurementmodel <- paste0(measurementmodel, paste0(indicators, collapse = " + "), " ~ grandmean_", fac, "* 1", "\n")
     # add random intercept (i.e., stable deviation of person i from grand mean):
     measurementmodel <- paste0(measurementmodel, paste0("RI_", fac), " =~ ", rho[fac], "*", paste(indicators, collapse = paste0(" + ", rho, "*")), "\n")
     
