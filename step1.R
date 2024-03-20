@@ -3,7 +3,10 @@
 # measurementmodel <- "
 #   f1 =~ v1 + v2 + v3 + v4
 #   f2 =~ v5 + v6 + v7 + v8
+#   v1 + v2 + v3 + v4 + v5 + v6 + v7 + v8 ~ 0*1
 #   "
+# source("center_within.R")
+# data <- center_within(data, vars = paste0("v", 1:8), id = "id")
 # id = "id"
 
 step1 <- function(data, measurementmodel, id){
