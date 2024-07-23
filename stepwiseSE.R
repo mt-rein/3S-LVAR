@@ -98,13 +98,15 @@ stepwiseSE <- function(step2output, step3output){
   
   # obtain the free parameters of step1:
   s1par <- coef(fit_step1, type = "free")
+  s1par <- s1par[grep("~~|=~", names(s1par))]
   # numerical derivation using the numDeriv package:
   deriv1 <- jacobian(get_rhokappa, x = s1par,
-                       param_free = lavInspect(fit_step1, what = "free"),
-                       param_est = lavInspect(fit_step1, what = "est"))
+                     param_free = lavInspect(fit_step1, what = "free"),
+                     param_est = lavInspect(fit_step1, what = "est"))
   
   # compute sigma1 and then sigma2:
   sigma1 <- vcov(fit_step1)
+  sigma1 <- sigma1[grep("~~|=~", rownames(sigma1)), grep("~~|=~", colnames(sigma1))]
   sigma2 <- deriv1 %*% sigma1 %*% t(deriv1)
   
   #### get C ####
