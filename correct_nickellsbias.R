@@ -1,9 +1,10 @@
 correct_nickellsbias <- function(phi, obs){
-  k <- ncol(phi) # Number of variables in the VAR model
-  I_k <- diag(k) # Identity matrix of order k
+  if(is.vector(phi)){
+    phi <- (phi*(obs-1) + 1)/(obs-2)
+  }
+  if(is.matrix(phi)){
+    diag(phi) <- (diag(phi)*(obs-1) + 1)/(obs-2)
+  }
   
-  # Calculate the bias correction term
-  bias <- -(I_k + phi) / (obs - 1)
-  corrected_phi <- phi - bias
-  return(corrected_phi)
+  return(phi)
 }
