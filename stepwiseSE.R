@@ -17,8 +17,8 @@ stepwiseSE <- function(step2output, step3output){
   library(dplyr)
   
   ## auxiliary functions:
-  # compute rho and kappa
-  get_rhokappa <- function(x, param_free, param_est){
+  # compute lambda_star and theta_star
+  get_lambda_star_theta_star <- function(x, param_free, param_est){
     # x:
     #   vector of step1 parameters (lamba, theta, psi)
     #   this is needed for the jacobian() function
@@ -44,12 +44,12 @@ stepwiseSE <- function(step2output, step3output){
       psi[param_free$psi != 0] <- x[free_psis]
     }
     
-    # obtain sigma and then compute rho and kappa
+    # obtain sigma and then compute lambda_star and theta_star
     sigma <- lambda %*% psi %*% t(lambda) + theta
-    rho <- diag(psi) %*% t(lambda) %*% solve(sigma) %*% lambda
-    kappa <- rho*(1-rho)*diag(psi)
+    lambda_star <- diag(psi) %*% t(lambda) %*% solve(sigma) %*% lambda
+    theta_star <- lambda_star*(1-lambda_star)*diag(psi)
     
-    return(c(rho, kappa))
+    return(c(lambda_star, theta_star))
   }
   
   get_LL <- function(x, parameters, data, s2par, s3par){
@@ -77,8 +77,8 @@ stepwiseSE <- function(step2output, step3output){
   fit_step1 <- step2output$fit_step1
   fit_step3 <- step3output$fit_step3
   data <- step3output$data
-  rho <- step2output$rho
-  kappa <- step2output$kappa
+  lambda_star <- step2output$lambda_star
+  theta_star <- step2output$theta_star
   
   # equation 17 (Bakk et al 2014) gives the corrected sampling variance of the
   # step3 parameters as follows:
@@ -91,7 +91,7 @@ stepwiseSE <- function(step2output, step3output){
   # parameters and innovation variances)
   
   #### 3) get sigma 2 ####
-  # sigma2 is the sampling variance of the step2 parameters (rho and kappa).
+  # sigma2 is the sampling variance of the step2 parameters (lambda_star and theta_star).
   # this can be obtained from the variances of the step1 parameters (sigma1) and
   # the first-order derivative of the step2 parameters towards the step1
   # parameters.
@@ -100,7 +100,7 @@ stepwiseSE <- function(step2output, step3output){
   s1par <- coef(fit_step1, type = "free")
   s1par <- s1par[grep("~~|=~", names(s1par))]
   # numerical derivation using the numDeriv package:
-  deriv1 <- jacobian(get_rhokappa, x = s1par,
+  deriv1 <- jacobian(get_lambda_star_theta_star, x = s1par,
                      param_free = lavInspect(fit_step1, what = "free"),
                      param_est = lavInspect(fit_step1, what = "est"))
   
@@ -115,7 +115,7 @@ stepwiseSE <- function(step2output, step3output){
   # equal to the number of step3 parameters, and columns equal to number of 
   # step2 parameters. 
   # we can obtain it using the hessian() function from numDeriv
-  s2par <- c(rho, kappa)
+  s2par <- c(lambda_star, theta_star)
   s3par <- coef(fit_step3)
   deriv2 <- hessian(get_LL,
                    x = c(s2par, s3par),

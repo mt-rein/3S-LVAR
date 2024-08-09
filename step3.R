@@ -20,8 +20,8 @@ step3 <- function(step2output, structuralmodel = NULL){
   
   ## extract objects from step 1 output:
   data <- step2output$data
-  rho <- step2output$rho
-  kappa <- step2output$kappa
+  lambda_star <- step2output$lambda_star
+  theta_star <- step2output$theta_star
   fit_step1 <- step2output$fit_step1
   
   ## generate character vectors for later use
@@ -56,29 +56,29 @@ step3 <- function(step2output, structuralmodel = NULL){
   indicatormodel <- NULL
   for (fac in 1:n_factors){
     indicatormodel <- paste(indicatormodel,
-                            ## fix the loadings to rho (non-lagged and lagged):
+                            ## fix the loadings to lambda_star (non-lagged and lagged):
                             paste0(factors[fac],
                                    " =~ ",
-                                   rho[factors[fac]],
+                                   lambda_star[factors[fac]],
                                    "*",
                                    factors_ind[fac]),
                             "\n",
                             paste0(factors_lagged[fac],
                                    " =~ ",
-                                   rho[factors[fac]],
+                                   lambda_star[factors[fac]],
                                    "*",
                                    factors_ind_lagged[fac]),
                             "\n",
-                            ## fix the variances to kappa:
+                            ## fix the variances to theta_star:
                             paste0(factors_ind[fac],
                                    " ~~ ",
-                                   kappa[factors[fac]],
+                                   theta_star[factors[fac]],
                                    "*",
                                    factors_ind[fac]),
                             "\n",
                             paste0(factors_ind_lagged[fac],
                                    " ~~ ",
-                                   paste(kappa[factors[fac]]),
+                                   paste(theta_star[factors[fac]]),
                                    "*",
                                    factors_ind_lagged[fac]),
                             "\n"
@@ -120,10 +120,13 @@ step3 <- function(step2output, structuralmodel = NULL){
                    missing = "ML",
                    cluster = id)
   
+  phi <- lavInspect(fit_step3, "est")$beta
+  phi <- phi[rowSums(phi) > 0, colSums(phi) > 0]
   
   #### 5) build the output ####
   output <- list("fit_step3" = fit_step3,
-                 "data" = data)
+                 "data" = data,
+                 "phi" = phi)
   
   return(output)
 }

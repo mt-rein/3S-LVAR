@@ -28,8 +28,8 @@ Input:
 
 Output: a list with four elements:
 -	`data`: the input data frame to which the factor scores have been appended
--	`rho`: a vector containing the values of ρ (i.e., the model-based reliabilities)
--	`kappa`: a vector containing the values of κ
+-	`lambda_star`: a vector containing the values of Λ* (i.e., the model-based reliabilities)
+-	`theta_star`: a vector containing the values of Θ*
 -	`fit_step1`: the lavaan fit object from step 1
 
 `step3(step2output, structuralmodel = NULL)`  
