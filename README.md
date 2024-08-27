@@ -1,7 +1,8 @@
 This is a collection of functions that implement the method [Three-Step Latent Vector Autoregression (Rein, Vermunt, De Roover, Vogelsmeier, 2023)](https://osf.io/preprints/psyarxiv/a2muk) in R.
 
 # Installation
-The script `installation.R` provides some code to install or load the functions. See the file `Instructions.docx` for more information on how to load and use the functions. The related publication also provides an application example of the method using these functions.
+The script `installation.R` provides some code to install or load the functions. 
+The related publication also provides an application example of the method using these functions.
 
 # Required Packages
 The functions are built on the `lavaan`, `dplyr`, `tidyr`, `RcppAlgos`, and `numDeriv` packages.
