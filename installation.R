@@ -16,12 +16,12 @@ source("center_within.R")
 install.packages("devtools") # required if you don't have the package installed yet
 library(devtools)
 #step1:
-source_url("https://raw.githubusercontent.com/mt-rein/3S-LVAR/main/step1.R?token=GHSAT0AAAAAACLOXLBYE62NTPZRPNIYVQUKZLW76VA")
+source_url("https://raw.githubusercontent.com/mt-rein/3S-LVAR/main/step1.R")
 #step2:
-source_url("https://raw.githubusercontent.com/mt-rein/3S-LVAR/main/step2.R?token=GHSAT0AAAAAACLOXLBY7I6E5HGULAY2SZV6ZLXAHCQ")
+source_url("https://raw.githubusercontent.com/mt-rein/3S-LVAR/main/step2.R")
 #step3:
-source_url("https://raw.githubusercontent.com/mt-rein/3S-LVAR/main/step3.R?token=GHSAT0AAAAAACLOXLBZWRBNB7W553RSSQRYZLXAHPA")
+source_url("https://raw.githubusercontent.com/mt-rein/3S-LVAR/main/step3.R")
 #stepwiseSE:
-source_url("https://raw.githubusercontent.com/mt-rein/3S-LVAR/main/stepwiseSE.R?token=GHSAT0AAAAAACLOXLBY5TJWIZYQKQRLC5OOZLXAINQ")
+source_url("https://raw.githubusercontent.com/mt-rein/3S-LVAR/main/stepwiseSE.R")
 #center_within:
-source_url("https://raw.githubusercontent.com/mt-rein/3S-LVAR/main/center_within.R?token=GHSAT0AAAAAACLOXLBZI7LBWGB6RFQASKKEZLXAJBQ")
+source_url("https://raw.githubusercontent.com/mt-rein/3S-LVAR/main/center_within.R")
