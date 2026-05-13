@@ -1,3 +1,5 @@
+NOTE: These functions are now implemented in the R package [ezLVAR](https://github.com/mt-rein/ezLVAR). This repository will not be updated and is only maintained for archiving purposes.
+
 This is a collection of functions that implement the method [Three-Step Latent Vector Autoregression (Rein, Vermunt, De Roover, Vogelsmeier, 2024)](https://doi.org/10.1080/10705511.2024.2398034) in R.
 
 # Installation
