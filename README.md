@@ -1,4 +1,4 @@
-This is a collection of functions that implement the method [Three-Step Latent Vector Autoregression (Rein, Vermunt, De Roover, Vogelsmeier, 2023)](https://osf.io/preprints/psyarxiv/a2muk) in R.
+This is a collection of functions that implement the method [Three-Step Latent Vector Autoregression (Rein, Vermunt, De Roover, Vogelsmeier, 2023)](https://doi.org/10.1080/10705511.2024.2398034) in R.
 
 # Installation
 The script `installation.R` provides some code to install or load the functions. 
